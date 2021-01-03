@@ -1,5 +1,5 @@
 # First stage: build the executable.
-FROM registry.gitlab.com/shitposting/tensorflow:latest AS builder
+FROM ghcr.io/shitpostingio/tensorflow:latest AS builder
 
 # It is important that these ARG's are defined after the FROM statement
 ARG SSH_PRIV="nothing"
