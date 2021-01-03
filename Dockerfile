@@ -22,7 +22,7 @@ COPY .  .
 RUN go install
 
 # Final stage: the running container.
-FROM registry.gitlab.com/shitposting/tensorflow:latest
+FROM ghcr.io/shitpostingio/tensorflow:latest
 
 # Import the user and group files from the first stage.
 COPY --from=builder /user/group /user/passwd /etc/
