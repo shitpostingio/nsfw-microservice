@@ -13,7 +13,7 @@ RUN mkdir /user && \
     echo 'nsfw:x:65534:' > /user/group
 
 # Set the Current Working Directory inside the container
-WORKDIR $GOPATH/src/gitlab.com/shitposting/nsfw-microservice
+WORKDIR $GOPATH/src/github.com/shitpostingio/nsfw-microservice
 
 # Import the code from the context.
 COPY .  .
