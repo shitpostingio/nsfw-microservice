@@ -1,0 +1,26 @@
+name: Docker
+
+on: push
+env:
+  IMAGE_NAME: nsfw
+jobs:
+  # Push image to GitHub Registru.
+  # See also https://docs.docker.com/docker-hub/builds/
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub registry
+        run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+
+      - name: Build image
+        run: docker build . --tag ghcr.io/shitpostingio/nsfw:latest
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: docker push ghcr.io/shitpostingio/nsfw:latest
